@@ -1,0 +1,27 @@
+{
+  "generatedAt": "2026-11-25T10:11:15.533Z",
+  "electronTypings": "43.7.7",
+  "scannedFiles": 5153,
+  "distinctElectronImports": 49,
+  "importSites": 235,
+  "missing": [],
+  "typeOnlyImports": [
+    "AppDetailsOptions",
+    "BaseWindowConstructorOptions",
+    "Cookie",
+    "Display",
+    "JumpListCategory",
+    "MemoryInfo",
+    "MenuItemConstructorOptions",
+    "MessageBoxOptions",
+    "MessageBoxReturnValue",
+    "MouseInputEvent",
+    "NavigationEntry",
+    "OpenDialogOptions",
+    "ProcessMetric",
+    "Rectangle",
+    "SaveDialogOptions",
+    "Shell",
+    "WebPreferences"
+  ]
+}

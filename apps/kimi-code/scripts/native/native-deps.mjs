@@ -2,6 +2,7 @@ export const SUPPORTED_TARGETS = Object.freeze([
   'darwin-arm64',
   'darwin-x64',
   'linux-arm64',
+  'linux-loong64',
   'linux-x64',
   'win32-arm64',
   'win32-x64',
@@ -57,6 +58,8 @@ export function resolveTargetDeps(target) {
   }
   return nativeDeps
     .filter((d) => d.collect !== 'virtual')
+    // loong64 port: clipboard/pi-tui 无龙芯原生包，运行期有 OSC52/命令行回退，SEA 收集时跳过
+    .filter((d) => !(target === 'linux-loong64' && (d.collect === 'native-files' || d.collect === 'native-file-only')))
     .map((d) => ({
       ...d,
       resolvedName: d.name(target),

@@ -1,0 +1,11 @@
+{
+  "app": "apps/desktop/dist-app/linux-loong64-unpacked/kimi-code",
+  "log": "ports/loong64/report/smoke-desktop.log",
+  "lines": 53,
+  "windowCreated": 1,
+  "uiReady": 1,
+  "waitSeconds": 25,
+  "pass": 5,
+  "fail": 0,
+  "generatedAt": "2026-11-25T18:30:34+08:00"
+}

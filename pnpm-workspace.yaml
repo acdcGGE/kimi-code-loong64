@@ -1,3 +1,8 @@
+supportedArchitectures:
+  os: [current]
+  cpu: [current, loong64]
+  libc: [current]
+
 packages:
   # Includes the standalone session-import conversion package.
   - packages/*
@@ -12,6 +17,10 @@ catalog:
   zod: 4.3.6
 
 overrides:
+  "electron-builder": "npm:@loongdotjs/electron-builder@26.15.6"
+  "app-builder-lib": "npm:@loongdotjs/app-builder-lib@26.15.6"
+  "builder-util": "npm:@loongdotjs/builder-util@26.15.3"
+  "rolldown-plugin-dts": "0.26.0"
   "kimi-code>@tailwindcss/vite": "4.1.18"
   "kimi-code>tailwindcss": "4.1.18"
   "ssh2@1.17.0>cpu-features": "-"

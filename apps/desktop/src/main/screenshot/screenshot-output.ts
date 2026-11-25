@@ -1,7 +1,7 @@
 import { randomUUID } from 'node:crypto';
 import { writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
-import { BaseWindow, BrowserWindow, ClipboardItem, Menu, app, clipboard, dialog, ipcMain, screen } from 'electron';
+import { BaseWindow, BrowserWindow, Menu, app, clipboard, dialog, ipcMain, nativeImage, screen } from 'electron';
 import { IPC } from '../ipc/ipc-channels';
 import { showFailureFeedback } from '../app/failure-dialog';
 import { log } from '../diagnostics/log';
@@ -51,11 +51,8 @@ export async function saveScreenshot(png: Buffer, parent?: BaseWindow): Promise<
 
 export async function copyScreenshot(png: Uint8Array): Promise<void> {
   if (png.byteLength === 0) throw new Error('invalid-png');
-  await clipboard.write([
-    new ClipboardItem({
-      'image/png': new Blob([new Uint8Array(png)], { type: 'image/png' }),
-    }),
-  ]);
+  // loong64 port: Electron 43 无 ClipboardItem / clipboard.write(Web API)，改用主进程原生 API
+  await clipboard.writeImage(nativeImage.createFromBuffer(Buffer.from(png)));
 }
 
 function fitPinSize(width: number, height: number): { width: number; height: number } {

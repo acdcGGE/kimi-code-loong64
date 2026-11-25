@@ -1,0 +1,30 @@
+# 本地工具链与下载缓存，由 00-fetch-runtime.sh / 05 重新生成
+downloads/
+opt/
+
+# pnpm 虚拟 store 与构建产物
+node_modules/
+*.node
+*.tgz
+dist/
+dist-app/
+dist-native/
+
+# 安装包超过 GitHub 单文件 100 MB 限制，走 Release 附件分发
+*.deb
+*.pkg.tar.zst
+*.AppImage
+
+# 构建日志体积大且不可复现，保留结构化 report/*.json 与文档作为证据链
+*.log
+report/*.log
+report/*.png
+
+# 本地杂项
+*.tmp
+*.swp
+*.bak
+.env
+.env.*
+.DS_Store
+Thumbs.db

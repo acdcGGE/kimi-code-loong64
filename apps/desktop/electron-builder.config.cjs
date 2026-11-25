@@ -109,6 +109,7 @@ module.exports = {
 
   protocols: canary || preview ? [] : [{ name: 'Kimi Code', role: 'Viewer', schemes: ['kimi-code'] }],
 
+  ...(process.env.KIMI_ELECTRON_DIST ? { electronDist: process.env.KIMI_ELECTRON_DIST } : {}),
   directories: {
     output: 'dist-app',
   },
@@ -208,7 +209,7 @@ module.exports = {
   linux: {
     syncDesktopName: true,
     category: 'Development',
-    target: ['AppImage', 'deb', 'rpm'],
+    target: ['dir'],
     artifactName,
     maintainer: 'Moonshot AI',
     executableName: canary ? 'kimi-code-canary' : 'kimi-code',

@@ -1,0 +1,7 @@
+{
+  "kimiRoot": ".",
+  "node": {"version": "v24.22.3", "arch": "loong64", "modules": "137", "home": "ports/loong64/opt/node-v24.22.3-linux-loong64"},
+  "pnpm": "10.33.0",
+  "electron": {"version": "43.7.7", "home": "ports/loong64/opt/electron-v43.7.7-linux-loong64", "source": "darkyzhou/electron-loong64", "sha256": "cdd64fb1365ba965c36055622f4eecad6e30fb81f5a3b2a81eca4995a8ef8875"},
+  "generatedAt": "2026-11-25T17:29:50+08:00"
+}

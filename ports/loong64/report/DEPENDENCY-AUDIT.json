@@ -1,0 +1,103 @@
+{
+  "generatedAt": "2026-11-25T18:30:00+08:00",
+  "source": {
+    "repo": "https://github.com/acdcGGE/kimi-code",
+    "commit": "f85f504b8faa9e03545dde894801a42e695b4202",
+    "versions": { "monorepo": "0.1.1", "cli": "2.7.3", "desktop": "1.4.3" }
+  },
+  "policy": {
+    "rule": "二进制依赖只从仓库或网络获取并校验，不夹带本机预置二进制；主机工具仅用于构建，不进入产物",
+    "compliant": true
+  },
+  "runtime": [
+    {
+      "name": "Node.js",
+      "version": "v24.22.3",
+      "arch": "loong64",
+      "source": "https://github.com/loong64/node/releases/download/v24.22.3/",
+      "verification": "官方 .sha256 逐文件校验，见 report/fetch-runtime.log"
+    },
+    {
+      "name": "pnpm",
+      "version": "10.33.0",
+      "source": "https://registry.npmmirror.com (工程 packageManager 指定版本)",
+      "verification": "pnpm --version"
+    },
+    {
+      "name": "Electron",
+      "version": "43.7.7",
+      "source": "https://github.com/darkyzhou/electron-loong64/releases/download/v43.7.7/",
+      "sha256": "cdd64fb1365ba965c36055622f4eecad6e30fb81f5a3b2a81eca4995a8ef8875",
+      "verification": "SHASUMS256.txt；同时落地 headers 与 ffmpeg"
+    }
+  ],
+  "nativeBindings": [
+    {
+      "package": "@rolldown-loong64/binding-linux-loong64-gnu",
+      "version": "1.2.8",
+      "registry": "https://registry.npmmirror.com",
+      "instances": 4,
+      "verification": "9 实例加载检查中的 4 个 rolldown 实例全部返回 VERSION"
+    },
+    {
+      "package": "@loong64/lightningcss-linux-loong64-gnu",
+      "version": "1.32.0",
+      "registry": "https://registry.npmmirror.com",
+      "instances": 2,
+      "verification": "1.30.2 / 1.32.0 两个实例 transform 可用"
+    },
+    {
+      "package": "@tailwindcss/oxide-linux-loong64-gnu",
+      "version": "4.2.2",
+      "registry": "https://registry.loongnix.cn:5873",
+      "instances": 1,
+      "verification": "与 lockfile 4.2.2 精确对齐，desktop renderer 构建通过"
+    }
+  ],
+  "buildTooling": [
+    {
+      "package": "@loongdotjs/electron-builder",
+      "version": "26.15.6",
+      "source": "npm alias (pnpm override)，registry.npmmirror.com",
+      "reason": "官方 26.15.3 不识别 loong64；龙芯分支提供 --loong64"
+    },
+    {
+      "package": "@loongdotjs/app-builder-lib",
+      "version": "26.15.6",
+      "source": "npm alias (pnpm override)"
+    },
+    {
+      "package": "@loongdotjs/builder-util",
+      "version": "26.15.3",
+      "source": "npm alias (pnpm override，该分支最新发布版本)"
+    }
+  ],
+  "nodePty": {
+    "package": "node-pty",
+    "version": "1.1.0",
+    "source": "npm registry 源码 + Electron 43 headers（网络获取）",
+    "build": "postinstall 的 electron-rebuild 本地编译，非预置二进制",
+    "verification": "LoongArch ELF；DT_NEEDED 仅 libstdc++/libm/libgcc_s/libc（无 libnode）；Electron 43 与 Node 24 均导出 fork,open,resize,process"
+  },
+  "hostTools": [
+    { "name": "dpkg-deb", "version": "1.22.6", "role": "deb 构造，构建期使用，不进入产物" },
+    { "name": "bsdtar/libarchive", "version": "3.7.4", "role": "pacman 构造与 MTREE，构建期使用" },
+    { "name": "zstd", "version": "1.5.7", "role": "pacman 压缩，构建期使用" }
+  ],
+  "verification": {
+    "cli": "12/12 PASS（bundle/SEA/9 个原生模块实例）",
+    "electronApiAudit": "0 缺失（Electron 43.7.7，扫描 5153 个源文件）",
+    "packages": "22/22 PASS（deb + pacman）",
+    "desktopSmoke": "5/5 PASS（window-created + ui-ready）",
+    "reports": [
+      "report/runtime.json",
+      "report/native-injections.json",
+      "report/node-pty.json",
+      "report/verify-cli.json",
+      "report/verify-bindings.json",
+      "report/electron-api-audit.json",
+      "report/linux-packages.json",
+      "report/smoke-desktop.json"
+    ]
+  }
+}

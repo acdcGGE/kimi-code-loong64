@@ -27,7 +27,7 @@ const helpers = new Map<string, NativePlatformHelper | undefined>();
 
 function loadNativePlatformHelper(platform: string, suffix = ""): NativePlatformHelper | undefined {
 	const arch = process.arch;
-	if (arch !== "x64" && arch !== "arm64") return undefined;
+	if (arch !== "x64" && arch !== "arm64" && arch !== "loong64") return undefined;
 	const nativePath = path.join(
 		"native",
 		platform,
