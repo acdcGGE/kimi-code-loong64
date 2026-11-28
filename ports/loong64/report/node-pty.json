@@ -1,0 +1,13 @@
+{
+  "platform": "linux-loong64",
+  "nodePtyVersion": "1.1.0",
+  "electronVersion": "43.7.7",
+  "nodeVersion": "v24.22.3",
+  "source": "local-build-from-source",
+  "stagedPrebuild": "apps/desktop/node_modules/node-pty/prebuilds/linux-loong64/pty.node",
+  "exports": "fork,open,resize,process",
+  "elf": "ELF 64-bit LSB shared object, LoongArch, version 1 (SYSV), dynamically linked, BuildID[sha1]=d59a63507ca37888409d6dca674c3baf78d084d1, not stripped",
+  "needed": "libstdc++.so.6 libm.so.6 libgcc_s.so.1 libc.so.6 ",
+  "verified": true,
+  "generatedAt": "2026-11-25T18:19:18+08:00"
+}

@@ -1,0 +1,68 @@
+{
+  "kimiRoot": ".",
+  "injectedAt": "2026-11-25T10:19:17.479Z",
+  "results": [
+    {
+      "id": "rolldown",
+      "community": "@rolldown-loong64/binding-linux-loong64-gnu@1.2.8",
+      "targets": [
+        {
+          "path": "rolldown@1.0.0-rc.12",
+          "landed": true,
+          "bytes": 19386312
+        },
+        {
+          "path": "rolldown@1.0.0-rc.12",
+          "landed": true,
+          "bytes": 19386312
+        },
+        {
+          "path": "rolldown@1.0.0-rc.15",
+          "landed": true,
+          "bytes": 19386312
+        },
+        {
+          "path": "rolldown@1.2.15",
+          "landed": true,
+          "bytes": 19386312
+        }
+      ],
+      "sourceFile": "rolldown-binding.linux-loong64-gnu.node",
+      "sizeBytes": 19386312,
+      "state": "INJECTED"
+    },
+    {
+      "id": "lightningcss",
+      "community": "@loong64/lightningcss-linux-loong64-gnu@1.32.0",
+      "targets": [
+        {
+          "path": "lightningcss@1.30.2",
+          "landed": true,
+          "bytes": 9753264
+        },
+        {
+          "path": "lightningcss@1.32.0",
+          "landed": true,
+          "bytes": 9753264
+        }
+      ],
+      "sourceFile": "lightningcss.linux-loong64-gnu.node",
+      "sizeBytes": 9753264,
+      "state": "INJECTED"
+    },
+    {
+      "id": "oxide-4.2.2",
+      "community": "@tailwindcss/oxide-linux-loong64-gnu@4.2.2",
+      "targets": [
+        {
+          "path": "@tailwindcss+oxide@4.2.2",
+          "landed": true,
+          "bytes": 3422160
+        }
+      ],
+      "sourceFile": "tailwindcss-oxide.linux-loong64-gnu.node",
+      "sizeBytes": 3422160,
+      "state": "INJECTED"
+    }
+  ]
+}
